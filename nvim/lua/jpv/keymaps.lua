@@ -12,14 +12,21 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 keymap("n", "<C-Space>", "<cmd>WhichKey \\<leader><cr>", opts)
 keymap("n", "<C-i>", "<C-i>", opts)
-keymap("n", "<leader>e",":NerdTreeToggle<CR>",opts)
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+
+-- local M = {}
+-- local function bind(opt, outer_opts)
+--   outer_opts = outer_opts or {noremap = true}
+--   return function(lhs, rhs, opts)
+--     opts = vim.tbl_extend("force", outer_opts, opts or {})
+--     vim.keymap.set(opt, lhs, rhs, opts)
+--   end
+-- end
+-- M.noremap = bind("n", {noremap = false})
+-- M.noremap = bind("n")
+-- M.noremap = bind("v")
+-- M.noremap = bind("i")
+-- return M
+
 
 -- Normal --
 -- Better window navigation
@@ -51,8 +58,6 @@ keymap("x", "L", "$", opts)
 keymap("o", "H", "^", opts)
 keymap("o", "L", "$", opts)
 
--- keymap("n", "n", "nzzzv", opts)
--- keymap("n", "N", "Nzzzv", opts)
 
 -- Naviagate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -83,26 +88,27 @@ keymap("n","al",":echo 'Testo'<cr>",opts)
 
 
 
--- Telescope
+---- Telescope
 keymap("n","<leader>ff",":Telescope find_files<cr>",opts)
 keymap("n","<leader>fg",":Telescope live_grep<cr>",opts)
 keymap("n","<leader>fb",":Telescope buffers<cr>",opts)
 keymap("n","<leader>fh",":Telescope help_tags<cr>",opts)
 
--- Adapter
-keymap("n","<leader>bg",":DapToggleBreakpoint<CR>",opts)
-keymap("n","<F7>",":DapStepInto<CR>",opts)
-keymap("n","S-<F7>",":DapStepOut<CR>",opts)
-keymap("n","<F8>",":DapStepOver<CR>",opts)
-keymap("n","<F10>",":DapContinue<CR>",opts)
---keymap("n","<leader>di",":lua require('dap.ui.variables').hover(function() return vim.fn.expand('"<cexpr>"') end)<CR>",opts)
-keymap("n","<leader>di",":lua require('dap.ui.variables').visual_hover()<CR>",opts)
-keymap("n","<leader>ds",":lua require('dap.ui.variables').scopes()<CR>",opts)
-keymap("n", "<Leader>di", ":lua require('dapui').toggle()<CR>",opts)
--- Vim Test
-keymap("n","<leader>t",":TestNearest<CR>",opts)
+---- Adapter
+--keymap("n","<leader>bg",":DapToggleBreakpoint<CR>",opts)
+--keymap("n","<F7>",":DapStepInto<CR>",opts)
+--keymap("n","S-<F7>",":DapStepOut<CR>",opts)
+--keymap("n","<F8>",":DapStepOver<CR>",opts)
+--keymap("n","<F10>",":DapContinue<CR>",opts)
+----keymap("n","<leader>di",":lua require('dap.ui.variables').hover(function() return vim.fn.expand('"<cexpr>"') end)<CR>",opts)
+--keymap("n","<leader>di",":lua require('dap.ui.variables').visual_hover()<CR>",opts)
+--keymap("n","<leader>ds",":lua require('dap.ui.variables').scopes()<CR>",opts)
+--keymap("n", "<Leader>di", ":lua require('dapui').toggle()<CR>",opts)
+---- Vim Test
+--keymap("n","<leader>t",":TestNearest<CR>",opts)
 
-
+---- Nvimtree
+keymap("n", "<C-x>", ":NvimTreeToggle<cr>", opts)
 -- Autocompletion
 -- keymap("i","<expr><Tab>","<cmd>pumvisible()",opts)
 

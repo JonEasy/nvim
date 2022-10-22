@@ -27,7 +27,7 @@ configs.setup {
   autopairs = {
     enable = true,
   },
-  indent = { enable = true, disable = { "kotlin" } },
+  indent = { enable = true  },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
