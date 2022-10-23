@@ -6,6 +6,15 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+-- General keymaps
+keymap("n","<leader>+","<C-a>", opts) -- increment
+keymap("n","<leader>-","<C-x>",opts) -- decrement
+
+keymap("i", "jk", "<ESC>l", opts) -- return to "v"mode from "i"
+
+keymap("n","x",'"_x', opts) -- delete single character wihtout copying into register
+
+
 --Remap space as leader key
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
@@ -35,11 +44,14 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>",opts)
 -- Tabs --
-keymap("n", "<enter>", ":tabnew %<cr>", opts)
-keymap("n", "<s-enter>", ":tabclose<cr>", opts)
-keymap("n", "<m-\\>", ":tabonly<cr>", opts)
+keymap("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
+keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
+keymap("n", "<S-t>", ":tabn<CR>", opts) --  go to next tab
+keymap("n", "<leader>tp", ":tabp<CR>", opts) --  go to previous tab
+-- keymap("n", "<enter>", ":tabnew %<cr>", opts)
+-- keymap("n", "<s-enter>", ":tabclose<cr>", opts)
+-- keymap("n", "<m-\\>", ":tabonly<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -63,11 +75,6 @@ keymap("o", "L", "$", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- keymap("n", "<RightMouse>", ":Alpha<CR>", opts)
-
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -82,33 +89,17 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- local keymap = vim.api.nvim_set_keymap
-keymap("n","al",":echo 'Testo'<cr>",opts)
---vim.api.nvim_set_keymap("n","al",":echo 'hello'<cr>",opts)
-
-
 
 ---- Telescope
 keymap("n","<leader>ff",":Telescope find_files<cr>",opts)
 keymap("n","<leader>fg",":Telescope live_grep<cr>",opts)
 keymap("n","<leader>fb",":Telescope buffers<cr>",opts)
 keymap("n","<leader>fh",":Telescope help_tags<cr>",opts)
-
----- Adapter
---keymap("n","<leader>bg",":DapToggleBreakpoint<CR>",opts)
---keymap("n","<F7>",":DapStepInto<CR>",opts)
---keymap("n","S-<F7>",":DapStepOut<CR>",opts)
---keymap("n","<F8>",":DapStepOver<CR>",opts)
---keymap("n","<F10>",":DapContinue<CR>",opts)
-----keymap("n","<leader>di",":lua require('dap.ui.variables').hover(function() return vim.fn.expand('"<cexpr>"') end)<CR>",opts)
---keymap("n","<leader>di",":lua require('dap.ui.variables').visual_hover()<CR>",opts)
---keymap("n","<leader>ds",":lua require('dap.ui.variables').scopes()<CR>",opts)
---keymap("n", "<Leader>di", ":lua require('dapui').toggle()<CR>",opts)
----- Vim Test
---keymap("n","<leader>t",":TestNearest<CR>",opts)
+keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+keymap("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", opts) -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
+keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts) -- list git branches (use <cr> to checkout) ["gb" for git branch]
+keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list current changes per file with diff preview ["gs" for git status]
 
 ---- Nvimtree
 keymap("n", "<C-x>", ":NvimTreeToggle<cr>", opts)
--- Autocompletion
--- keymap("i","<expr><Tab>","<cmd>pumvisible()",opts)
 

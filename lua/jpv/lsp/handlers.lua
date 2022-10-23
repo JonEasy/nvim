@@ -1,3 +1,12 @@
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+  print("Returning due to not cmp_nvim_lsp")
+	return
+end
+
+print("LOOOAADIN")
+
+
 local M = {}
 
 -- TODO: backfill this to template
@@ -50,10 +59,9 @@ local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
-    print("RETURNING")
+    print("RETURNING due to not having illuminate")
 		return
 	end
-  print("NOT returning")
 	illuminate.on_attach(client)
 	-- end
 end
@@ -83,6 +91,7 @@ end
 --   print("Inside keymaps iiiiiiiiiiiiiiiiiiiiiii")
 -- end
 local function lsp_keymaps()
+  print("Inside keymap function")
     local bufmap = function(mode, lhs, rhs)
       local opts = {buffer = true}
       vim.keymap.set(mode, lhs, rhs, opts)
@@ -90,44 +99,45 @@ local function lsp_keymaps()
 
     -- You can search each function in the help page.
     -- For example :help vim.lsp.buf.hover()
-
-    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
-    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
-    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+    bufmap("n", "gf", "<cmd>Lspsaga lsp_finder<CR>") -- show definition, references
+    bufmap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>") -- got to declaration
+    bufmap("n", "gd", "<cmd>Lspsaga peek_definition<CR>") -- see definition and make edits in window
+    bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>") -- go to implementation
+    bufmap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- see available code actions
+    bufmap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>") -- smart rename
+    bufmap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>") -- show  diagnostics for line
+    bufmap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>") -- show diagnostics for cursor
+    bufmap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>") -- jump to previous diagnostic in buffer
+    bufmap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>") -- jump to next diagnostic in buffer
+    bufmap("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- show documentation for what is under cursor
+    bufmap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>") -- see outline on right hand side
+    -- bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+    -- bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+    -- bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+    -- bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+    -- bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+    -- bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    -- bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+    -- bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+    -- bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    -- bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+    -- bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+    -- bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+    -- bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
     print("Inside keymaps iiiiiiiiiiiiiiiiiiiiiii")
 
 end
 
 
 M.on_attach = function(client, bufnr)
-	-- vim.notify(client.name .. " starting...")
-	-- TODO: refactor this into a method that checks if string in list
-	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
-	end
 	lsp_keymaps()
-  print("Illuminating document")
+  print("Attaching keymaps")
 	lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
-end
 
-print("LOOOAADIN")
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M

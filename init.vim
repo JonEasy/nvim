@@ -7,18 +7,36 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' } " An optional p
 
 Plug 'tpope/vim-commentary' " Comenting
 
+Plug 'vim-scripts/ReplaceWithRegister'
+
 Plug 'vim-airline/vim-airline' " Vim Airline
 
 Plug 'williamboman/mason.nvim' "New generation Code Server
 Plug 'williamboman/mason-lspconfig.nvim'
 
-Plug 'neovim/nvim-lspconfig' " Lnguage Server Protocol 
-" Plug 'williamboman/nvim-lsp-installer'
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+" Configuring lsp servers
+Plug 'neovim/nvim-lspconfig' " Configure LSP server
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } " Enhanced LSP uis
+Plug 'hrsh7th/cmp-nvim-lsp' " Autocompletion
+Plug 'onsails/lspkind.nvim' " vs.code like icons for autocompletion
+
+" Completion
+Plug 'hrsh7th/nvim-cmp' " The completion plugin
+Plug 'hrsh7th/cmp-buffer' "  buffer completions
+Plug 'hrsh7th/cmp-path' "  path completions
+Plug 'hrsh7th/cmp-cmdline' "  cmdline completions
+Plug 'hrsh7th/cmp-nvim-lua'
+
+
+" Snippets
+Plug 'saadparwaiz1/cmp_luasnip' "  snippet completions
+Plug 'rafamadriz/friendly-snippets' " a bunch of snippets to use
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
 
 
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Tokyo colorscheme
 Plug 'EdenEast/nightfox.nvim' " Color scheme
+Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Color scheme
 " Plug 'https://github.com/ap/vim-css-color'
 Plug 'doums/darcula'
@@ -40,18 +58,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
 " Plug 'nvim-lua/completion-nvim' " Completion  
 Plug 'mfussenegger/nvim-jdtls' " Eclipse for java
 
-Plug 'hrsh7th/nvim-cmp' " The completion plugin
-Plug 'hrsh7th/cmp-buffer' "  buffer completions
-Plug 'hrsh7th/cmp-path' "  path completions
-Plug 'hrsh7th/cmp-cmdline' "  cmdline completions
-Plug 'saadparwaiz1/cmp_luasnip' "  snippet completions
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
+
+Plug 'RRethy/vim-illuminate' 
 
 Plug 'udalov/kotlin-vim' " Kotlin Plugin for highilht
 
-Plug 'L3MON4D3/LuaSnip' " snippet engine
-Plug 'rafamadriz/friendly-snippets' " a bunch of snippets to use
 
 Plug 'nvim-treesitter/nvim-treesitter' " Tree Sitters
 Plug 'nvim-treesitter/playground'
