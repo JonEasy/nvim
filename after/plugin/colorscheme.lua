@@ -8,7 +8,7 @@ local options = {
 	styles = {
 		comments = "italic",
 		-- keywords = "bold",
-		variables = "italic,undercurl",
+		variables = "italic",
 		-- strings = "bold",
 		types = "italic,bold",
 	},
@@ -33,21 +33,15 @@ local palettes = {
 local specs = {
 	nightfox = {
 		syntax = {
-			-- builtin1 = "red",
-			-- builtin2 = "cyan",
-			-- field= "black",
-			-- statetement= "black",
-			operator = "red.dim",
-			type = "#7ab4d4",
-			variable = "cyan",
-			func = "yellow",
+			builtin0 = "orange.bright",
+			builtin1 = "magenta.dim",
+			ident = "white",
+			const = "orange.dim",
+			field = "magenta.dim",
+			statetement = "black",
+			type = "#f3f3f3",
 			keyword = "orange",
-			-- -- -- Adding either `.bright` or `.dim` will change the value
-			ident = "orange",
-			conditional = "orange",
-			-- number = "orange.dim",
 			string = "green.dim",
-			variable = "magenta",
 		},
 		git = {
 			changed = "red.dim",
@@ -72,8 +66,8 @@ require("nightfox").setup({
 --
 -- setup must be called before loading
 -- local colorscheme = "gruvbox"
--- local colorscheme = "nightfox"
-local colorscheme = "nightfly"
+local colorscheme = "nightfox"
+-- local colorscheme = "nightfly"
 -- local colorscheme = "base16-espresso"
 -- local colorscheme = "ayu"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

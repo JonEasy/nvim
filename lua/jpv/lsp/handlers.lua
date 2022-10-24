@@ -21,41 +21,42 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
-	-- local config = {
-	-- 	-- disable virtual text
-	-- 	virtual_text = false,
-	-- 	-- show signs
-	-- 	signs = {
-	-- 		active = signs,
-	-- 	},
-	-- 	update_in_insert = true,
-	-- 	underline = true,
-	-- 	severity_sort = true,
-	-- 	float = {
-	-- 		focusable = false,
-	-- 		style = "minimal",
-	-- 		border = "rounded",
-	-- 		source = "always",
-	-- 		header = "",
-	-- 		prefix = "",
-	-- 	},
-	-- }
+	local config = {
+		-- disable virtual text
+		virtual_text = false,
+		-- show signs
+		signs = {
+			active = signs,
+		},
+		update_in_insert = true,
+		underline = true,
+		severity_sort = true,
+		float = {
+			focusable = false,
+			style = "minimal",
+			border = "rounded",
+			source = "always",
+			header = "",
+			prefix = "",
+		},
+	}
 
-	-- vim.diagnostic.config(config)
+	vim.diagnostic.config(config)
 
-	-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	-- 	border = "rounded",
-	-- 	width = 60,
-	-- })
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "rounded",
+		width = 60,
+	})
 
-	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	-- 	border = "rounded",
-	-- 	width = 60,
-	-- })
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "rounded",
+		width = 60,
+	})
 end
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
+		print("server_capabilities")
 		vim.api.nvim_exec(
 			[[
       augroup lsp_document_highlight
@@ -89,7 +90,6 @@ local function lsp_keymaps()
 	bufmap("n", "K", "<cmd>Lspsaga hover_doc<CR>") -- show documentation for what is under cursor
 	bufmap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>") -- see outline on rik
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()']])
-	print("Inside keymaps iiiiiiiiiiiiiiiiiiiiiii")
 end
 
 M.on_attach = function(client, bufnr)

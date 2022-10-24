@@ -18,15 +18,15 @@ end
 
 -- enable mason
 mason.setup({
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            },
-            bordered = 'rounded'
-        }
-    })
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+		bordered = "rounded",
+	},
+})
 
 mason_lspconfig.setup({
 	-- list of servers for mason to install
@@ -38,7 +38,6 @@ mason_lspconfig.setup({
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
 })
-
 
 mason_null_ls.setup({
 	-- list of formatters & linters for mason to install
