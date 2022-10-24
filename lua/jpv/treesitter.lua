@@ -1,42 +1,37 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  return
+-- import nvim-treesitter plugin safely
+local status, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status then
+	return
 end
 
--- local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
--- ft_to_parser.motoko = "typescript"
-
-configs.setup {
-  ensure_installed = "all", -- one of "all" or a list of languages
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "" }, -- List of parsers to ignore installing
-  matchup = {
-    enable = true, -- mandatory, false will disable the whole extension
-    disable_virtual_text = true,
-    disable = { "html" }, -- optional, list of language that will be disabled
-    -- include_match_words = false
-  },
-  highlight = {
-    -- use_languagetree = true,
-    enable = true, -- false will disable the whole extension
-    -- disable = { "css", "html" }, -- list of language that will be disabled
-    -- disable = { "css", "markdown" }, -- list of language that will be disabled
-    disable = { "markdown" }, -- list of language that will be disabled
-    -- additional_vim_regex_highlighting = true,
-  },
-  autopairs = {
-    enable = true,
-  },
-  indent = { enable = true  },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
-  autotag = {
-    enable = true,
-    disable = { "xml", "markdown" },
-  },
-  playground = {
-    enable = true,
-  }
-}
+-- configure treesitter
+treesitter.setup({
+	-- enable syntax highlighting
+	highlight = {
+		enable = true,
+	},
+	-- enable indentation
+	indent = { enable = true },
+	-- enable autotagging (w/ nvim-ts-autotag plugin)
+	autotag = { enable = true },
+	-- ensure these language parsers are installed
+	ensure_installed = {
+		"json",
+		"javascript",
+		"typescript",
+		"tsx",
+		"yaml",
+		"html",
+		"css",
+		"markdown",
+		"svelte",
+		"graphql",
+		"bash",
+		"lua",
+		"vim",
+		"dockerfile",
+		"gitignore",
+	},
+	-- auto install above language parsers
+	auto_install = true,
+})

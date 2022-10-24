@@ -1,1 +1,1 @@
-vim.g.lightline = {}
+-- vim.g.lightline = {}

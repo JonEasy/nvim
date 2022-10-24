@@ -1,16 +1,19 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
+  print("Returning. Plugin cmp not present")
   return
 end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
+  print("Returning. Plugin luasnip not present")
   return
 end
 
 -- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
 if not lspkind_status then
+  print("Returning. Plugin lspkind not present")
 	return
 end
 

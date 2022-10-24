@@ -16,7 +16,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 " Configuring lsp servers
 Plug 'neovim/nvim-lspconfig' " Configure LSP server
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' } " Enhanced LSP uis
+Plug 'kkharji/lspsaga.nvim' 
 Plug 'hrsh7th/cmp-nvim-lsp' " Autocompletion
 Plug 'onsails/lspkind.nvim' " vs.code like icons for autocompletion
 
@@ -27,11 +27,17 @@ Plug 'hrsh7th/cmp-path' "  path completions
 Plug 'hrsh7th/cmp-cmdline' "  cmdline completions
 Plug 'hrsh7th/cmp-nvim-lua'
 
-
 " Snippets
 Plug 'saadparwaiz1/cmp_luasnip' "  snippet completions
 Plug 'rafamadriz/friendly-snippets' " a bunch of snippets to use
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v<CurrentMajor>.*'}
+
+" Linters and formatter
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jayp0521/mason-null-ls.nvim'
+
+" Git Signs
+Plug 'lewis6991/gitsigns.nvim'
 
 
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Tokyo colorscheme
@@ -87,12 +93,12 @@ Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
-" source ~/.config/coc/coc_keymap.vim
 
 nmap <F8> :TagbarToggle<CR>
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " show hover doc
+let g:learn_path = $HOME . "/onewind"
 
 lua require('jpv')
 " lua print(vim.fn.stdpath('data'))

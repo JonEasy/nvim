@@ -1,40 +1,50 @@
-
 local status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
 	print("Returning.Not importing lspconfig")
-  return
+	return
 end
 
-
-
 lspconfig["sumneko_lua"].setup({
-	on_attach = require('jpv.lsp.handlers').on_attach,
-	capabilities = require('jpv.lsp.handlers').capabilities,
+
+	settings = { -- custom settings for lua
+		Lua = {
+			-- make the language server recognize "vim" global
+			diagnostics = {
+				globals = { "vim" },
+			},
+			workspace = {
+				-- make language server aware of runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.stdpath("config") .. "/lua"] = true,
+				},
+			},
+		},
+	},
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
 })
 
 lspconfig["kotlin_language_server"].setup({
 	-- on_attach = on_attach,
-	on_attach = require('jpv.lsp.handlers').on_attach,
-	capabilities = require('jpv.lsp.handlers').capabilities,
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
 })
-
 
 lspconfig["pyright"].setup({
 	-- on_attach = on_attach,
-	on_attach = require('jpv.lsp.handlers').on_attach,
-	capabilities = require('jpv.lsp.handlers').capabilities,
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
 })
-
 
 -- lspconfig.on_server_ready(function(server)
 -- 	print("Server is".. server)
 --   local opts = {
---     on_attach = require("jpv.lsp.handlers").on_attach, 
+--     on_attach = require("jpv.lsp.handlers").on_attach,
 --     capabilities = require("jpv.lsp.handlers").capabilities,
 --   }
 --   end
 -- )
-
 
 --   -- This setup() function is exactly the same as lspconfig's setup function
 --   -- Refer to http://github.com/neovim/nvim-lsp-config/blob/master/doc/server_configuration.md

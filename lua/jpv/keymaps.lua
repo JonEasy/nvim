@@ -7,13 +7,12 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- General keymaps
-keymap("n","<leader>+","<C-a>", opts) -- increment
-keymap("n","<leader>-","<C-x>",opts) -- decrement
+keymap("n", "<leader>+", "<C-a>", opts) -- increment
+keymap("n", "<leader>-", "<C-x>", opts) -- decrement
 
 keymap("i", "jk", "<ESC>l", opts) -- return to "v"mode from "i"
 
-keymap("n","x",'"_x', opts) -- delete single character wihtout copying into register
-
+keymap("n", "x", '"_x', opts) -- delete single character wihtout copying into register
 
 --Remap space as leader key
 keymap("n", "<Space>", "", opts)
@@ -35,7 +34,6 @@ keymap("n", "<C-i>", "<C-i>", opts)
 -- M.noremap = bind("v")
 -- M.noremap = bind("i")
 -- return M
-
 
 -- Normal --
 -- Better window navigation
@@ -59,7 +57,6 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-
 -- I hate typing these
 keymap("n", "H", "^", opts)
 keymap("n", "L", "$", opts)
@@ -70,17 +67,14 @@ keymap("x", "L", "$", opts)
 keymap("o", "H", "^", opts)
 keymap("o", "L", "$", opts)
 
-
 -- Naviagate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
 
 -- Visual Block --
 -- Move text up and down
@@ -89,12 +83,11 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
-
 ---- Telescope
-keymap("n","<leader>ff",":Telescope find_files<cr>",opts)
-keymap("n","<leader>fg",":Telescope live_grep<cr>",opts)
-keymap("n","<leader>fb",":Telescope buffers<cr>",opts)
-keymap("n","<leader>fh",":Telescope help_tags<cr>",opts)
+keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<cr>", opts)
+keymap("n", "<leader>fh", ":Telescope help_tags<cr>", opts)
 keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts) -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", opts) -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts) -- list git branches (use <cr> to checkout) ["gb" for git branch]
@@ -102,4 +95,4 @@ keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts) -- list current
 
 ---- Nvimtree
 keymap("n", "<C-x>", ":NvimTreeToggle<cr>", opts)
-
+keymap("n", "<leader>f", ":Format<cr>", opts)
