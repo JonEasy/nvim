@@ -16,7 +16,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 
 " Configuring lsp servers
 Plug 'neovim/nvim-lspconfig' " Configure LSP server
-Plug 'kkharji/lspsaga.nvim' 
+Plug 'glepnir/lspsaga.nvim' 
 Plug 'hrsh7th/cmp-nvim-lsp' " Autocompletion
 Plug 'onsails/lspkind.nvim' " vs.code like icons for autocompletion
 
@@ -44,6 +44,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Tokyo colorscheme
 Plug 'EdenEast/nightfox.nvim' " Color scheme
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Color scheme
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 " Plug 'https://github.com/ap/vim-css-color'
 Plug 'doums/darcula'
 " Plug 'catppuccin/nvim', {'as': 'catppuccin'}
@@ -91,6 +92,12 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons' " If you want to have icons in your statusline choose one of these
 Plug 'ryanoasis/vim-devicons'
 
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+Plug 'epwalsh/obsidian.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
 
@@ -99,6 +106,14 @@ nmap <F8> :TagbarToggle<CR>
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " show hover doc
 let g:learn_path = $HOME . "/onewind"
+
+" do not close the preview tab when switching to other buffers
+let g:vim_markdown_folding_disabled = 1
+let g:mkdp_auto_start = 1
+let g:mkdp_refresh_slow = 1
+let g:mkdp_markdown_css = ''
+let g:mkdp_browser = 'firefox'
+
 
 lua require('jpv')
 " lua print(vim.fn.stdpath('data'))

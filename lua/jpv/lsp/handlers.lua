@@ -43,15 +43,15 @@ M.setup = function()
 
 	vim.diagnostic.config(config)
 
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-		width = 60,
-	})
+	-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	-- 	border = "rounded",
+	-- 	width = 60,
+	-- })
 
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-		width = 60,
-	})
+	-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	-- 	border = "rounded",
+	-- 	width = 60,
+	-- })
 end
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
@@ -93,9 +93,14 @@ local function lsp_keymaps()
 end
 
 M.on_attach = function(client, bufnr)
+	print("Client name is" .. client.name)
+	-- if client.name == "kotlin_language_server" then
+	-- 	client.server_capabilities.documentFormattingProvider = false
+	-- end
+
 	lsp_keymaps()
 	print("Attaching keymaps")
-	lsp_highlight_document(client)
+	-- lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
