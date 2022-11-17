@@ -81,7 +81,7 @@ local function lsp_keymaps()
 	bufmap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>") -- got to declaration
 	bufmap("n", "gd", "<cmd>Lspsaga peek_definition<CR>") -- see definition and make edits in window
 	bufmap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>") -- go to implementation
-	bufmap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>") -- see available code actions
+	bufmap("n", "<leader>a", "<cmd>Lspsaga code_action<CR>") -- see available code actions
 	bufmap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>") -- smart rename
 	bufmap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>") -- show  diagnostics for line
 	bufmap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>") -- show diagnostics for cursor

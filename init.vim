@@ -80,6 +80,7 @@ Plug 'tpope/vim-surround' " Vim surround
 
 Plug 'mfussenegger/nvim-dap' " Debugger
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap-python'
 
 Plug 'vim-test/vim-test' " Vim Testing
 
@@ -117,8 +118,10 @@ let g:mkdp_browser = 'firefox'
 
 lua require('jpv')
 " lua print(vim.fn.stdpath('data'))
-
-
+let g:python_host_prog ='/home/jonel/anaconda3/envs/py38/bin/python'
+let g:python3_host_prog = 'home/jonel/anaconda3/envs/py38/bin/python'
+" let g:python3_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
+" let g:python_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " Autocommand reloading file whenever it is being saved
 " vim.cmd([
 "   \ autogroup vim-plug-config

@@ -66,9 +66,9 @@ require("nightfox").setup({
 --
 -- setup must be called before loading
 -- local colorscheme = "gruvbox"
-local colorscheme = "nightfox"
+-- local colorscheme = "nightfox"
 -- local colorscheme = "nightfly"
--- local colorscheme = "catpuccin"
+local colorscheme = "catppuccin-macchiato"
 -- local colorscheme = "base16-espresso"
 -- local colorscheme = "ayu"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

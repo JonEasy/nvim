@@ -6,6 +6,7 @@ end
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local actions = null_ls.builtins.code_actions
 
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -19,9 +20,9 @@ null_ls.setup({
 		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }), -- js/ts formatter
 		formatting.stylua, -- lua formatter
-		formatting.black.with({ extra_args = { "--fast" } }),
+		formatting.black.with({ extra_args = { "--fast", "--line-length", "80" } }),
 		formatting.ktlint,
-		diagnostics.flake8,
+		diagnostics.flake8.with({ extra_args = { "--ignore", "E501" } }),
 		diagnostics.eslint_d.with({ -- js/ts linter
 			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
 			condition = function(utils)
@@ -29,6 +30,8 @@ null_ls.setup({
 			end,
 		}),
 		diagnostics.ktlint,
+		-- actions.gitsigns,
+		actions.refactoring,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)
