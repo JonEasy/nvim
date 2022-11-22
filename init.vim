@@ -61,9 +61,9 @@ Plug 'preservim/nerdtree' " Nerdtree
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 "
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
 " Plug 'nvim-lua/completion-nvim' " Completion  
-Plug 'mfussenegger/nvim-jdtls' " Eclipse for java
+" Plug 'mfussenegger/nvim-jdtls' " Eclipse for java
 
 
 Plug 'RRethy/vim-illuminate' 
@@ -119,7 +119,7 @@ let g:mkdp_browser = 'firefox'
 lua require('jpv')
 " lua print(vim.fn.stdpath('data'))
 let g:python_host_prog ='/home/jonel/anaconda3/envs/py38/bin/python'
-let g:python3_host_prog = 'home/jonel/anaconda3/envs/py38/bin/python'
+let g:python3_host_prog = '/home/jonel/anaconda3/envs/py38/bin/python'
 " let g:python3_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " let g:python_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " Autocommand reloading file whenever it is being saved
