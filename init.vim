@@ -39,17 +39,17 @@ Plug 'jayp0521/mason-null-ls.nvim'
 " Git Signs
 Plug 'lewis6991/gitsigns.nvim'
 
-
+" Colorschemes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Tokyo colorscheme
 Plug 'EdenEast/nightfox.nvim' " Color scheme
-Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Color scheme
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-" Plug 'https://github.com/ap/vim-css-color'
-Plug 'doums/darcula'
-" Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
+" Plug 'bluz71/vim-nightfly-guicolors'
+" Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Color scheme
+" Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+" " Plug 'https://github.com/ap/vim-css-color'
+" Plug 'doums/darcula'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+" Plug 'morhetz/gruvbox'
+" Plug 'chriskempson/base16-vim'
 
 Plug 'nvim-lualine/lualine.nvim' " LuaLine
 
@@ -99,6 +99,10 @@ Plug 'preservim/vim-markdown'
 Plug 'epwalsh/obsidian.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" Project detection
+Plug 'ahmedkhalf/project.nvim'
+
 call plug#end()
 
 

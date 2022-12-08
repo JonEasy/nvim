@@ -30,11 +30,24 @@ lspconfig["kotlin_language_server"].setup({
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
 })
+lspconfig["jdtls"].setup({
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
+})
 
 lspconfig["pyright"].setup({
 	-- on_attach = on_attach,
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
 })
 
 -- lspconfig.on_server_ready(function(server)
