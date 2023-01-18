@@ -25,6 +25,18 @@ lspconfig["sumneko_lua"].setup({
 	capabilities = require("jpv.lsp.handlers").capabilities,
 })
 
+-- lspconfig["javascript"].setup({
+-- 	-- on_attach = on_attach,
+-- 	on_attach = require("jpv.lsp.handlers").on_attach,
+-- 	capabilities = require("jpv.lsp.handlers").capabilities,
+-- })
+
+lspconfig["tsserver"].setup({
+	-- on_attach = on_attach,
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
+})
+
 lspconfig["kotlin_language_server"].setup({
 	-- on_attach = on_attach,
 	on_attach = require("jpv.lsp.handlers").on_attach,
