@@ -31,7 +31,7 @@ null_ls.setup({
 		}),
 		diagnostics.ktlint,
 		-- actions.gitsigns,
-		actions.refactoring,
+		-- actions.refactoring,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

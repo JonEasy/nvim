@@ -63,7 +63,7 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 "
 " Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocompletion
 " Plug 'nvim-lua/completion-nvim' " Completion  
-" Plug 'mfussenegger/nvim-jdtls' " Eclipse for java
+Plug 'mfussenegger/nvim-jdtls' " Eclipse for java
 
 
 Plug 'RRethy/vim-illuminate' 
