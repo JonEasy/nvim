@@ -68,7 +68,7 @@ local config = {
 	},
 
 	on_attach = require("jpv.lsp.handlers").on_attach,
-	capabilities = capabilities,
+	capabilities = require("jpv.lsp.handlers").capabilities,
 	settings = {
 		java = {
 			-- jdt = {
