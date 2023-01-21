@@ -5,7 +5,6 @@ end
 
 local home = vim.env.HOME
 local jdtls_path = vim.fn.stdpath "data" .. "/mason/packages/jdtls/"
-local lombok_path = vim.fn.stdpath "data" .. "/mason/packages/jdtls/lombok.jar"
 local equinox_version = "1.6.400.v20210924-0641"
 
 WORKSPACE_PATH = home .. "/workspace/"
@@ -48,10 +47,6 @@ local config = {
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version
-    "-javaagent",
-    lombok_path,
-    "-Xbootclasspath/a",
-    lombok_path,
     -- 💀
     "-configuration",
     jdtls_path .. "config_" .. OS_NAME,
