@@ -1,7 +1,7 @@
 require("jpv.lsp.mason")
 require("jpv.lsp.lspsaga")
 require("jpv.lsp.handlers").setup()
-require("jpv.lsp.settings.java")
+-- require("jpv.lsp.settings.java")
 require("jpv.lsp.lspconfig")
 require("jpv.lsp.null-ls")
 -- local servers = {'pyright','tsserver','kotlin_language_server', 'kotlin_language_server'}

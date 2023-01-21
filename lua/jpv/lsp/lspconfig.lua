@@ -36,14 +36,14 @@ lspconfig["kotlin_language_server"].setup({
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
 })
-local config = {
-	cmd = { "/home/jonel/.local/share/nvim/mason/bin/jdtls" },
-	root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvn" }, { upward = true })[1]),
-}
-lspconfig["jdtls"].setup({
-	on_attach = require("jpv.lsp.handlers").on_attach,
-	capabilities = require("jpv.lsp.handlers").capabilities,
-})
+-- local config = {
+-- 	cmd = { "/home/jonel/.local/share/nvim/mason/bin/jdtls" },
+-- 	root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvn" }, { upward = true })[1]),
+-- }
+-- lspconfig["jdtls"].setup({
+-- 	on_attach = require("jpv.lsp.handlers").on_attach,
+-- 	capabilities = require("jpv.lsp.handlers").capabilities,
+-- })
 -- lspconfig["jdtls"].setup({
 -- 	config,
 -- 	on_attach = require("jpv.lsp.handlers").on_attach,
