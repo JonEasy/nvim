@@ -17,7 +17,7 @@ vim.fn.sign_define("DapStopped", { text = "🞂", texthl = "LspDiagnosticsDefaul
 vim.fn.sign_define("DapLogPint", { text = "◉", texthl = "LspDiagnosticsDefaultError" })
 
 -- Adapter configuration
-local HOME = os.getenv("HOME")
+local HOME = vim.env.HOME
 local DEBUGGER_LOCATION = HOME .. "/.local/share/nvim/kotlin-debug-adapter"
 
 dap.adapters.kotlin = {

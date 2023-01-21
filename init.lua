@@ -1,3 +1,4 @@
+vim.cmd([[
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'windwp/nvim-autopairs' " Autopairs, integrates with both cmp and treesitter
@@ -110,7 +111,6 @@ nmap <F8> :TagbarToggle<CR>
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " show hover doc
-let g:learn_path = $HOME . "/onewind"
 
 " do not close the preview tab when switching to other buffers
 let g:vim_markdown_folding_disabled = 1
@@ -120,10 +120,7 @@ let g:mkdp_markdown_css = ''
 let g:mkdp_browser = 'firefox'
 
 
-lua require('jpv')
 " lua print(vim.fn.stdpath('data'))
-let g:python_host_prog ='/home/jonel/anaconda3/envs/py38/bin/python'
-let g:python3_host_prog = '/home/jonel/anaconda3/envs/py38/bin/python'
 " let g:python3_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " let g:python_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " Autocommand reloading file whenever it is being saved
@@ -134,8 +131,8 @@ let g:python3_host_prog = '/home/jonel/anaconda3/envs/py38/bin/python'
 "       autogroup end
 "   \ ])
 
+]])
 
+vim.g.learn_path = vim.env.HOME .. "/onewind"
 
-
-
-
+require("jpv")
