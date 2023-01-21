@@ -119,6 +119,8 @@ let g:mkdp_refresh_slow = 1
 let g:mkdp_markdown_css = ''
 let g:mkdp_browser = 'firefox'
 
+let g:python_host_prog ='/home/jonel/anaconda3/envs/py39/bin/python'
+let g:python3_host_prog = '/home/jonel/anaconda3/envs/py39/bin/python'
 
 " lua print(vim.fn.stdpath('data'))
 " let g:python3_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
