@@ -43,6 +43,7 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
+		"-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
 		"-Xms1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
@@ -69,7 +70,43 @@ local config = {
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = capabilities,
 	settings = {
-
+		java = {
+			-- jdt = {
+			--   ls = {
+			--     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
+			--   }
+			-- },
+			eclipse = {
+				downloadSources = true,
+			},
+			configuration = {
+				updateBuildConfiguration = "interactive",
+			},
+			maven = {
+				downloadSources = true,
+			},
+			implementationsCodeLens = {
+				enabled = true,
+			},
+			referencesCodeLens = {
+				enabled = true,
+			},
+			references = {
+				includeDecompiledSources = true,
+			},
+			inlayHints = {
+				parameterNames = {
+					enabled = "all", -- literals, all, none
+				},
+			},
+			format = {
+				enabled = false,
+				-- settings = {
+				--   profile = "asdf"
+				-- }
+			},
+		},
+		signatureHelp = { enabled = true },
 		completion = {
 			favoriteStaticMembers = {
 				"org.hamcrest.MatcherAssert.assertThat",
@@ -81,8 +118,37 @@ local config = {
 				"org.mockito.Mockito.*",
 			},
 		},
+		contentProvider = { preferred = "fernflower" },
+		extendedClientCapabilities = extendedClientCapabilities,
+		sources = {
+			organizeImports = {
+				starThreshold = 9999,
+				staticStarThreshold = 9999,
+			},
+		},
+		codeGeneration = {
+			toString = {
+				template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+			},
+			useBlocks = true,
+		},
 	},
 
+	flags = {
+		allow_incremental_sync = true,
+	},
+
+	-- Language server `initializationOptions`
+	-- You need to extend the `bundles` with paths to jar files
+	-- if you want to use additional eclipse.jdt.ls plugins.
+	--
+	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+	--
+	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+	init_options = {
+		-- bundles = {},
+		bundles = bundles,
+	},
 	-- 💀
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
