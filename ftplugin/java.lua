@@ -57,8 +57,9 @@ local config = {
     "-data",
     workspace_dir,
   },
-	on_attach = require("jpv.lsp.handlers").on_attach,
-	capabilities = require("jpv.lsp.handlers").capabilities,
+
+  on_attach = require("jpv.lsp.handlers").on_attach(),
+  capabilities = require("jpv.lsp.handlers").capabilities
 
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.
