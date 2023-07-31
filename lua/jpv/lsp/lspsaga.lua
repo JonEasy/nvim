@@ -74,6 +74,7 @@ saga.setup({
 	},
 
 	ui = {
+		title = false,
 		theme = "round",
 		border = "rounded",
 		winblend = 0,

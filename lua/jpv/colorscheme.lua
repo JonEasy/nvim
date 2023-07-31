@@ -69,6 +69,8 @@ require("nightfox").setup({
 -- local colorscheme = "nightfox"
 -- local colorscheme = "nightfly"
 local colorscheme = "catppuccin-macchiato"
+vim.g.termguicolors = true
+-- local colorscheme = "aura"
 -- local colorscheme = "base16-espresso"
 -- local colorscheme = "ayu"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

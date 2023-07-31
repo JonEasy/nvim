@@ -31,10 +31,19 @@ lspconfig["tsserver"].setup({
 	capabilities = require("jpv.lsp.handlers").capabilities,
 })
 
+lspconfig["cssls"].setup({
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
+})
+local jdk_home = "/usr/lib/jvm/java-11-openjdk-amd64/"
 lspconfig["kotlin_language_server"].setup({
 	-- on_attach = on_attach,
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
+	cmd_env = {
+		PATH = jdk_home .. "/bin:" .. vim.env.PATH,
+		JAVA_HOME = jdk_home,
+	},
 })
 -- local config = {
 -- 	cmd = { "/home/jonel/.local/share/nvim/mason/bin/jdtls" },

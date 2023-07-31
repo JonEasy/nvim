@@ -43,6 +43,7 @@ Plug 'lewis6991/gitsigns.nvim'
 " Colorschemes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " Tokyo colorscheme
 Plug 'EdenEast/nightfox.nvim' " Color scheme
+Plug 'techtuner/aura-neovim'
 " Plug 'bluz71/vim-nightfly-guicolors'
 " Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Color scheme
 " Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
