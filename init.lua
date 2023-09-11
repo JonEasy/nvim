@@ -135,6 +135,6 @@ let g:python3_host_prog = '/home/jonel/anaconda3/envs/py39/bin/python'
 
 ]])
 
-vim.g.learn_path = vim.env.HOME .. "/onewind"
+-- vim.g.learn_path = vim.env.HOME .. "/onewind"
 
 require("jpv")

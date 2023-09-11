@@ -6,6 +6,7 @@ end
 local home = vim.env.HOME
 local jdtls_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls/"
 local equinox_version = "1.6.400.v20210924-0641"
+-- local equinox_version = "1.6.200.v20220720-2012.jar"
 
 WORKSPACE_PATH = home .. "/workspace/"
 if vim.fn.has("mac") == 1 then
@@ -35,7 +36,7 @@ capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 local config = {
 	cmd = {
 		-- 💀
-		"java", -- or '/path/to/java17_or_newer/bin/java'
+		"java", --/usr/lib/jvm/openjdk-17/bin/java", -- or '/path/to/java17_or_newer/bin/java'
 		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -43,7 +44,7 @@ local config = {
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 		"-Xms1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
