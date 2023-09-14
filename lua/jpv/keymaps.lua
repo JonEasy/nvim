@@ -98,7 +98,8 @@ keymap("n", "<C-x>", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", ":Format<cr>", opts)
 
 -- Nvim DAP
-keymap("n", "<leader>dk", ":DapContinue()", opts) --  function() require('dap').continue() end)
+-- keymap("n", "<leader>dk", ":DapContinue()", opts) --  function() require('dap').continue() end)
+-- keymap("n", "<leader>b", ":DapToggleBreakpoint()", opts)
 -- keymap("n", "<leader>dl", function()
 -- 	require("dap").run_last()
 -- end)

@@ -1,7 +1,7 @@
 vim.cmd([[
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'windwp/nvim-autopairs' " Autopairs, integrates with both cmp and treesitter
+Plug 'windwp/nvim-autopairs' " Autopairs, integrates with both cmp and ireesitter
 Plug 'nvim-lua/plenary.nvim' " Telescope. Requires plenary to function 
 Plug 'nvim-telescope/telescope.nvim' " The main Telescope plugin
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' } " An optional plugin recommended by Telescope docs

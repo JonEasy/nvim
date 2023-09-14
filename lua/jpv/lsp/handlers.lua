@@ -96,6 +96,14 @@ M.on_attach = function(client, bufnr)
 	-- 	client.server_capabilities.documentFormattingProvider = false
 	-- end
 
+	-- require("jdtls").setup_dap({ hotcodereplace = "auto" })
+	if client.name == "jdtls" then
+		print("Inside jdt ls")
+		require("jdtls").setup_dap({ hotcodereplace = "auto" })
+		-- require("jdtls.dap").setup_dap_main_class_configs()
+		vim.lsp.codelens.refresh()
+	end
+
 	lsp_keymaps()
 	print("Attaching keymaps for client " .. client.name)
 	lsp_highlight_document(client)

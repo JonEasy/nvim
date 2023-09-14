@@ -31,7 +31,7 @@ mason.setup({
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"sumneko_lua",
+		"lua_ls",
 		"kotlin_language_server",
 		"pyright",
 		"jdtls",
