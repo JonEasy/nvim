@@ -25,6 +25,9 @@ local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
+print("Home dir is " .. home)
+print("Workspace dir is " .. workspace_dir)
+print("Project name is " .. project_name)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -50,7 +53,7 @@ local config = {
 		-- 💀
 		"java", --/usr/lib/jvm/openjdk-17/bin/java", -- or '/path/to/java17_or_newer/bin/java'
 		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
+		-- "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",

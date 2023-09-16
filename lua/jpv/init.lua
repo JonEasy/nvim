@@ -2,7 +2,6 @@ require("jpv.autopairs")
 require("jpv.telescope")
 require("jpv.nvim-cmp")
 require("jpv.lsp")
-require("jpv.nvimtree")
 require("jpv.options")
 require("jpv.keymaps")
 require("jpv.toggleterm")
@@ -12,4 +11,9 @@ require("jpv.gitsigns")
 require("jpv.project")
 require("jpv.dap") -- require('jpv.coc')
 -- source this last
-require "jpv.colorscheme"
+require("jpv.colorscheme")
+
+-- require("jpv.nvimtree-config")
+require("nvim-tree").setup()
+require("jpv.nvimtree-config")
+-- require("nvimtree-config")

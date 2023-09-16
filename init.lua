@@ -55,7 +55,6 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'nvim-lualine/lualine.nvim' " LuaLine
 
 Plug 'preservim/tagbar' " Tagbar For code completion
-Plug 'preservim/nerdtree' " Nerdtree
 
 
 " Plug 'tc50cal/vim-terminal' " Vim Terminal
@@ -90,6 +89,7 @@ Plug 'ThePrimeagen/vim-be-good' " Practicing
 Plug 'gennaro-tedesco/nvim-jqx' " Json file validator
 
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'kyazdani42/nvim-web-devicons' " If you want to have icons in your statusline choose one of these
 Plug 'ryanoasis/vim-devicons'
