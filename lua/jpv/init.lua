@@ -1,3 +1,4 @@
+require("jpv.core")
 require("jpv.lazyvim")
 require("lazy").setup({ { import = "jpv.plugins" } }, {
 	checker = {
@@ -21,7 +22,7 @@ require("lazy").setup({ { import = "jpv.plugins" } }, {
 -- require("jpv.project")
 -- require("jpv.dap") -- require('jpv.coc')
 -- source this last
-require("jpv.colorscheme")
+--require("jpv.colorscheme")
 
 -- require("jpv.nvimtree-config")
 -- require("nvim-tree").setup()
