@@ -5,7 +5,9 @@ end
 
 local home = vim.env.HOME
 local jdtls_path = vim.fn.stdpath("data") .. "/mason/packages/jdtls/"
-local equinox_version = "1.6.400.v20210924-0641"
+local equinox_version = "1.6.500.v20230717-2134"
+local DEBUGGER_LOCATION = vim.fn.stdpath("data")
+-- local equinox_version = "1.6.200.v20220720-2012.jar"
 
 WORKSPACE_PATH = home .. "/workspace/"
 if vim.fn.has("mac") == 1 then
@@ -18,11 +20,14 @@ else
 	vim.notify("Unsupported OS", vim.log.levels.WARN)
 end
 
--- local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
+print("Home dir is " .. home)
+print("Workspace dir is " .. workspace_dir)
+print("Project name is " .. project_name)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -32,18 +37,29 @@ end
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
+local bundles = {
+	vim.fn.glob(
+		DEBUGGER_LOCATION .. "/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+	),
+}
+
+vim.list_extend(
+	bundles,
+	vim.split(vim.fn.glob(DEBUGGER_LOCATION .. "/vscode-java-test/server/com.microsoft.java.test.plugin-*.jar"), "\n")
+)
+
 local config = {
 	cmd = {
 		-- 💀
-		"java", -- or '/path/to/java17_or_newer/bin/java'
+		"java", --/usr/lib/jvm/openjdk-17/bin/java", -- or '/path/to/java17_or_newer/bin/java'
 		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
+		-- "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
 		"-Dlog.protocol=true",
 		"-Dlog.level=ALL",
-		"-javaagent:" .. home .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+		"-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 		"-Xms1g",
 		"--add-modules=ALL-SYSTEM",
 		"--add-opens",
@@ -69,6 +85,9 @@ local config = {
 
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
+	init_options = {
+		bundles = bundles,
+	},
 	settings = {
 		java = {
 			-- jdt = {
@@ -145,14 +164,14 @@ local config = {
 	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
 	--
 	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
-	init_options = {
-		-- bundles = {},
-		bundles = bundles,
-	},
+	-- init_options = {
+	-- 	-- bundles = {},
+	-- 	bundles = bundles,
+	-- },
 	-- 💀
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
-	-- root_dir = require("jdtls.setup").find_root(root_markers) ,
+	root_dir = require("jdtls.setup").find_root(root_markers),
 }
 
 local keymap = vim.keymap.set

@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-lspconfig["sumneko_lua"].setup({
+lspconfig["lua_ls"].setup({
 
 	settings = { -- custom settings for lua
 		Lua = {
@@ -30,6 +30,11 @@ lspconfig["tsserver"].setup({
 	on_attach = require("jpv.lsp.handlers").on_attach,
 	capabilities = require("jpv.lsp.handlers").capabilities,
 })
+lspconfig["dockerls"].setup({
+	-- on_attach = on_attach,
+	on_attach = require("jpv.lsp.handlers").on_attach,
+	capabilities = require("jpv.lsp.handlers").capabilities,
+})
 
 lspconfig["cssls"].setup({
 	on_attach = require("jpv.lsp.handlers").on_attach,
@@ -45,6 +50,15 @@ lspconfig["kotlin_language_server"].setup({
 		JAVA_HOME = jdk_home,
 	},
 })
+
+-- lspconfig["jdtls"].setup({
+
+-- 	print("Inside jdt ls"),
+-- 	require("jdtls").setup_dap({ hotcodereplace = "auto" }),
+-- 	require("jdtls.dap").setup_dap_main_class_configs(),
+-- 	vim.lsp.codelens.refresh(),
+-- })
+-- -- require("lspconfig").jdtls.setup({ cmd = { "jdtls" } })
 -- local config = {
 -- 	cmd = { "/home/jonel/.local/share/nvim/mason/bin/jdtls" },
 -- 	root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvn" }, { upward = true })[1]),

@@ -1,21 +1,6 @@
 local dap = require("dap")
 local dapui = require("dapui")
 
-dap.listeners.after["event_initialized"]["dapui_config"] = function()
-	print("Opening UI")
-	dapui.open()
-end
-dap.listeners.before["event_terminated"]["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before["event_exited"]["dapui_config"] = function()
-	dapui.close()
-end
-
-vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "🞂", texthl = "LspDiagnosticsDefaultInformation", linehl = "CursorLine" })
-vim.fn.sign_define("DapLogPint", { text = "◉", texthl = "LspDiagnosticsDefaultError" })
-
 -- Adapter configuration
 local HOME = vim.env.HOME
 local DEBUGGER_LOCATION = HOME .. "/.local/share/nvim/kotlin-debug-adapter"
@@ -34,10 +19,38 @@ dap.adapters.python = {
 	--    cwd = '${workspaceFolder}',
 	--  },
 }
--- dap.defaults.fallback.external_terminal = {
---   command = '/usr/bin/bash';
---   args = {'-e'};
--- }
+
+function attach_to_debug()
+	require("jdtls.dap").setup_dap_main_class_configs()
+	require("jdtls").compile("full")
+	-- dap.configurations.java = {
+	-- 	{
+	-- 		type = "java",
+	-- 		request = "launch",
+	-- 		name = "Debug (Attach) - Remote",
+	-- 		-- javaExec = "java",
+	-- 		classPaths = "/home/jonel/CodeTest",
+	-- 		-- mainClass = "sort.Bigsort.Bigsort",
+	-- 		-- classPaths = {},
+	-- 		-- hostName = "127.0.0.1",
+	-- 		-- 		-- port = 1044,
+	-- 		-- 		cwd = "/home/jonel/Documents/CodeTest",
+	-- 	},
+	-- }
+	dap.continue()
+end
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+keymap("n", "<leader>da", ":lua attach_to_debug()<CR>", opts)
+keymap("n", "<F5>", ':lua require"dap".continue()<CR>', opts)
+keymap("n", "<F8>", ':lua require"dap".step_over()<CR>', opts)
+keymap("n", "<F7>", ':lua require"dap".step_into()<CR>', opts)
+keymap("n", "<F6>", ':lua require"dap".step_out()<CR>', opts)
+keymap("n", "<leader>rr", "<cmd>split | term java %<CR>", opts)
+
+keymap("n", "<leader>b", ':lua require"dap".toggle_breakpoint()<CR>', opts)
+keymap("n", "<leader>B", ':lua require"dap".set_breakpoint(vim.fn.input("Condition: "))<CR>', opts)
 
 -- Configuration
 dap.configurations.kotlin = {
@@ -100,40 +113,57 @@ dap.configurations.python = {
 	},
 }
 
--- dapui.setup({
--- 	icons = {
--- 		expanded = "⯆",
--- 		collapsed = "⯈",
--- 	},
--- 	mappings = {
--- 		expand = { "<CR>", "<LeftMouse>" },
--- 		open = { "o" },
--- 		remove = { "d", "x" },
--- 		edit = { "c" },
--- 		repl = { "r" },
--- 	},
--- 	layouts = {
--- 		{
--- 			elements = {
--- 				"breakpoints",
--- 				"watches",
--- 				"stacks",
--- 				"scopes",
--- 			},
--- 			size = 40,
--- 			position = "right",
--- 		},
--- 		tray = {
--- 			elements = { "repl", "console" },
--- 			size = 10,
--- 			position = "bottom",
--- 		},
--- 	},
--- 	floating = {
--- 		max_height = nil, -- Either absolute integer or float
--- 		max_width = nil, -- between 0 and 1 (size relative to screen size)
--- 	},
--- })
+dapui.setup({
+	icons = {
+		expanded = "⯆",
+		collapsed = "⯈",
+	},
+	mappings = {
+		expand = { "<CR>", "<LeftMouse>" },
+		open = { "o" },
+		remove = { "d", "x" },
+		edit = { "c" },
+		repl = { "r" },
+	},
+	layouts = {
+		{
+			elements = {
+				"breakpoints",
+				"watches",
+				"stacks",
+				"scopes",
+			},
+			size = 40,
+			position = "right",
+		},
+		tray = {
+			elements = { "repl", "console" },
+			size = 10,
+			position = "bottom",
+		},
+	},
+	floating = {
+		max_height = nil, -- Either absolute integer or float
+		max_width = nil, -- between 0 and 1 (size relative to screen size)
+	},
+})
+
+local dapui = require("dapui")
+dap.listeners.after["event_initialized"]["dapui_config"] = function()
+	print("Opening UI")
+	dapui.open()
+end
+dap.listeners.before["event_terminated"]["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before["event_exited"]["dapui_config"] = function()
+	dapui.close()
+end
+
+vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "🞂", texthl = "LspDiagnosticsDefaultInformation", linehl = "CursorLine" })
+vim.fn.sign_define("DapLogPint", { text = "◉", texthl = "LspDiagnosticsDefaultError" })
+
 require("dapui").setup({
 	icons = { expanded = "", collapsed = "", current_frame = "" },
 	mappings = {

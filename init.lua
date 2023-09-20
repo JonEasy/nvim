@@ -1,7 +1,7 @@
 vim.cmd([[
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'windwp/nvim-autopairs' " Autopairs, integrates with both cmp and treesitter
+Plug 'windwp/nvim-autopairs' " Autopairs, integrates with both cmp and ireesitter
 Plug 'nvim-lua/plenary.nvim' " Telescope. Requires plenary to function 
 Plug 'nvim-telescope/telescope.nvim' " The main Telescope plugin
 Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make' } " An optional plugin recommended by Telescope docs
@@ -56,7 +56,6 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'nvim-lualine/lualine.nvim' " LuaLine
 
 Plug 'preservim/tagbar' " Tagbar For code completion
-Plug 'preservim/nerdtree' " Nerdtree
 
 
 " Plug 'tc50cal/vim-terminal' " Vim Terminal
@@ -91,6 +90,7 @@ Plug 'ThePrimeagen/vim-be-good' " Practicing
 Plug 'gennaro-tedesco/nvim-jqx' " Json file validator
 
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'kyazdani42/nvim-web-devicons' " If you want to have icons in your statusline choose one of these
 Plug 'ryanoasis/vim-devicons'
@@ -136,6 +136,6 @@ let g:python3_host_prog = '/home/jonel/anaconda3/envs/py39/bin/python'
 
 ]])
 
-vim.g.learn_path = vim.env.HOME .. "/onewind"
+-- vim.g.learn_path = vim.env.HOME .. "/onewind"
 
 require("jpv")
