@@ -15,5 +15,5 @@ require("jpv.colorscheme")
 
 -- require("jpv.nvimtree-config")
 require("nvim-tree").setup()
-require("jpv.nvimtree-config")
+-- require("jpv.nvimtree-config")
 -- require("nvimtree-config")
