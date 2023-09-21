@@ -123,6 +123,18 @@ let g:mkdp_browser = 'firefox'
 let g:python_host_prog ='/home/jonel/anaconda3/envs/py39/bin/python'
 let g:python3_host_prog = '/home/jonel/anaconda3/envs/py39/bin/python'
 
+let g:clipboard = {
+            \   'name': 'WslClipboard',
+            \   'copy': {
+            \      '+': 'clip.exe',
+            \      '*': 'clip.exe',
+            \    },
+            \   'paste': {
+            \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            \   },
+            \   'cache_enabled': 0,
+            \ }
 " lua print(vim.fn.stdpath('data'))
 " let g:python3_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
 " let g:python_host_prog = '/mnt/c/Users/212756951/Anaconda3/envs/py38/'
