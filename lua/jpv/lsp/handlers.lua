@@ -91,14 +91,14 @@ local function lsp_keymaps()
 end
 
 M.on_attach = function(client, bufnr)
-	print("Client name is" .. client.name)
+	-- print("Client name is" .. client.name)
 	-- if client.name == "kotlin_language_server" then
 	-- 	client.server_capabilities.documentFormattingProvider = false
 	-- end
 
 	-- require("jdtls").setup_dap({ hotcodereplace = "auto" })
 	if client.name == "jdtls" then
-		print("Inside jdt ls")
+		-- print("Inside jdt ls")
 		require("jdtls.setup").add_commands()
 		require("jdtls").setup_dap({ hotcodereplace = "auto" })
 		-- require('lsp')
@@ -107,7 +107,7 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps()
-	print("Attaching keymaps for client " .. client.name)
+	-- print("Attaching keymaps for client " .. client.name)
 	lsp_highlight_document(client)
 end
 
