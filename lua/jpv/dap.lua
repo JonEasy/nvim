@@ -132,6 +132,8 @@ dapui.setup({
 				"watches",
 				"stacks",
 				"scopes",
+				"console",
+				-- "repl",
 			},
 			size = 40,
 			position = "right",
