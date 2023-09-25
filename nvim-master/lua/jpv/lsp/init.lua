@@ -1,5 +1,5 @@
---require("jpv.lsp.mason")
---require("jpv.lsp.lspsaga")
+require("jpv.lsp.mason")
+require("jpv.lsp.lspsaga")
 require("jpv.lsp.handlers").setup()
 -- require("jpv.lsp.settings.java")
 require("jpv.lsp.lspconfig")

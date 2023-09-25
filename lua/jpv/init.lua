@@ -1,6 +1,6 @@
 require("jpv.core")
 require("jpv.lazyvim")
-require("lazy").setup({ { import = "jpv.plugins" } }, {
+require("lazy").setup({ { import = "jpv.plugins" }, { import = "jpv.plugins.lsp" } }, {
 	checker = {
 		enabled = true,
 		notify = false,

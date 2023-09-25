@@ -3,27 +3,8 @@ if not status_ok then
 	print("Returning due to not cmp_nvim_lsp")
 	return
 end
---
+
 local M = {}
-
-local M = {
-	"hrsh7th/nvim-cmp",
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"saadparwaiz1/cmp_luasnip",
-		"L3MON4D3/LuaSnip",
-	},
-}
-M.config = function()
-	local cmp = require("cmp")
-	vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
-	cmp.setup()
-end
 
 -- TODO: backfill this to template
 M.setup = function()
