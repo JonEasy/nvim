@@ -83,8 +83,8 @@ local config = {
 		workspace_dir,
 	},
 
-	on_attach = require("jpv.lsp.plugins.handlers").on_attach,
-	capabilities = require("jpv.lsp.plugins.handlers").capabilities,
+	on_attach = require("jpv.core.handlers").on_attach,
+	capabilities = require("jpv.core.handlers").capabilities,
 	init_options = {
 		bundles = bundles,
 	},
