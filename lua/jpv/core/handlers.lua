@@ -13,8 +13,8 @@ M.on_attach = function(client, bufnr)
 	opts.desc = "Go to declaration"
 	keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
-	opts.desc = "Show LSP definitions"
-	keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+	--opts.desc = "Show LSP definitions"
+	--keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
 	opts.desc = "Show LSP implementations"
 	keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
@@ -45,6 +45,33 @@ M.on_attach = function(client, bufnr)
 
 	opts.desc = "Restart LSP"
 	keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+	opts.desc = "See definitons and make edits in window"
+	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+
+	opts.desc = "See available actions"
+	keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
+
+	opts.desc = "smart renamej"
+	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
+
+	opts.desc = "show diagnostics for line"
+	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+	opts.desc = "show diagnostics for cursos"
+	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+
+	opts.desc = "jump tp previous diagnostic in buffer"
+	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+
+	opts.desc = "jump to next diagnostic in buffer"
+	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+
+	opts.desc = "show documentation for what is under cursor"
+	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+
+	opts.desc = "see outline rik"
+	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>")
 end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities()
