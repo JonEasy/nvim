@@ -6,7 +6,7 @@ return {
 			setup = {
 				jdtls = function(_, opts)
 					vim.api.nvim_create_autocmd("FileType", {
-						pattern = "java",
+						pattern = { "java", "*kotlin", "*.kt" },
 						callback = function()
 							require("lazyvim.util").on_attach(function(_, buffer)
 								vim.keymap.set(
